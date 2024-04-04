@@ -6,7 +6,9 @@ import Feedback from "./components/feedback/Feedback";
 
 const App = () => {
   const [reviews] = useState({ good: 0, neutral: 0, bad: 0 });
-
+  //   const updateFeedback = (feedbackType) => {
+  //     setReviews({ ...rewievs, good: rewievs.good + 1 });
+  //   };
   return (
     <>
       <Description />
