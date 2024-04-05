@@ -27,13 +27,11 @@ const Options = ({ updateFeedback, totalFeedback, resetFeedback }) => {
       >
         Bad
       </button>
-      {totalFeedback ? (
+
+      {totalFeedback > 0 && (
         <button className={css.button} onClick={resetFeedback}>
           Reset
         </button>
-      ) : (
-        // Що повертаємо?! (можливість далі клікати)
-        <div></div>
       )}
     </div>
   );
