@@ -22,7 +22,7 @@ const App = () => {
   const totalFeedback = reviews.good + reviews.neutral + reviews.bad;
 
   const resetFeedback = () => {
-    setReviews(0);
+    setReviews({ good: 0, neutral: 0, bad: 0 });
   };
 
   useEffect(() => {
