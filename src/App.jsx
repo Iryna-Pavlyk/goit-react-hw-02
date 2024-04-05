@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import css from "./App.module.css";
 import Description from "./components/description/Description";
 import Options from "./components/options/Options";
 import Feedback from "./components/feedback/Feedback";
@@ -29,7 +30,7 @@ const App = () => {
   }, [reviews]);
 
   return (
-    <>
+    <div className={css.container}>
       <Description />
       <Options
         updateFeedback={updateFeedback}
@@ -41,7 +42,7 @@ const App = () => {
       ) : (
         <Notification />
       )}
-    </>
+    </div>
   );
 };
 
