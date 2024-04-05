@@ -3,17 +3,33 @@ import "./App.css";
 import Description from "./components/description/Description";
 import Options from "./components/options/Options";
 import Feedback from "./components/feedback/Feedback";
+import Notification from "./components/notification/Notification";
 
 const App = () => {
-  const [reviews] = useState({ good: 0, neutral: 0, bad: 0 });
-  //   const updateFeedback = (feedbackType) => {
-  //     setReviews({ ...rewievs, good: rewievs.good + 1 });
-  //   };
+  const [reviews, setReviews] = useState({ good: 0, neutral: 0, bad: 0 });
+  const updateFeedback = (feedbackType) => {
+    setReviews({
+      ...reviews,
+      [feedbackType]: reviews[feedbackType] + 1,
+    });
+  };
+  const totalFeedback = reviews.good + reviews.neutral + reviews.bad;
+  const resetFeedback = () => {
+    setReviews(0);
+  };
   return (
     <>
       <Description />
-      <Options reviews={reviews} />
-      <Feedback reviews={reviews} />
+      <Options
+        updateFeedback={updateFeedback}
+        totalFeedback={totalFeedback}
+        resetFeedback={resetFeedback}
+      />
+      {totalFeedback ? (
+        <Feedback reviews={reviews} totalFeedback={totalFeedback} />
+      ) : (
+        <Notification />
+      )}
     </>
   );
 };
