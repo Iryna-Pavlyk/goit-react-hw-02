@@ -20,6 +20,7 @@ const App = () => {
     });
   };
   const totalFeedback = reviews.good + reviews.neutral + reviews.bad;
+  const persentReviews = Math.round((reviews.good / totalFeedback) * 100);
 
   const resetFeedback = () => {
     setReviews({ good: 0, neutral: 0, bad: 0 });
@@ -38,7 +39,11 @@ const App = () => {
         resetFeedback={resetFeedback}
       />
       {totalFeedback ? (
-        <Feedback reviews={reviews} totalFeedback={totalFeedback} />
+        <Feedback
+          reviews={reviews}
+          totalFeedback={totalFeedback}
+          persentReviews={persentReviews}
+        />
       ) : (
         <Notification />
       )}
